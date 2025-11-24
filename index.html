@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Robot Tài Xỉu 85% - Hit Club</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Màn hình đăng nhập -->
+  <div id="loginScreen">
+    <input id="keyInput" type="password" placeholder="Nhập key (111)" maxlength="5" autocomplete="off" />
+    <button id="loginBtn">Đăng nhập</button>
+    <div id="loginMsg" style="margin-top:10px; color:#f00;"></div>
+  </div>
+
+  <!-- Màn hình robot -->
+  <div id="robotScreen" style="display:none">
+    <div id="robotContainer" class="move" aria-label="Robot tài xỉu">
+      <div id="head" role="img" aria-label="Đầu robot mặt tròn">
+        <div id="eyeLeft"></div>
+        <div id="eyeRight"></div>
+      </div>
+      <div id="armLeft"><div class="hand"></div></div>
+      <div id="board">---</div>
+      <div id="armRight"><div class="hand"></div></div>
+      <div id="body"></div>
+      <div id="legLeft"></div>
+      <div id="legRight"></div>
+    </div>
+
+    <div id="timer" aria-live="polite" aria-atomic="true">30</div>
+    <div id="prediction" aria-live="polite" aria-atomic="true">Đoán: ---</div>
+    <div id="totalCount">Lượt chơi: 0 / 20</div>
+
+    <div id="tipsContainer" aria-label="Mẹo cách chơi robot tài xỉu">
+      <div id="tipsTitle">Mẹo chơi robot tài xỉu</div>
+      <button id="lockTipsBtn" aria-pressed="false" aria-label="Khóa/Mở mẹo chơi">Khóa</button>
+      <div id="tipsText">
+        <ul>
+          <li>Robot đoán đúng khoảng 85%, không nên cược tất cả.</li>
+          <li>Quan sát kết quả vài lần để hiểu pattern.</li>
+          <li>Chơi có giới hạn, không tham lam.</li>
+          <li>Dừng lại khi thắng liên tiếp để bảo toàn vốn.</li>
+          <li>Không nên tin tuyệt đối, tài xỉu vẫn là trò may rủi.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tuyết rơi -->
+  <div id="snow"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

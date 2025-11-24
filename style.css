@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+body {
+  margin:0; padding:0;
+  background: #111;
+  color:#0f0;
+  font-family: 'Roboto Mono', monospace;
+  overflow-x:hidden;
+  user-select:none;
+}
+
+/* Tuyết rơi */
+#snow {
+  pointer-events:none;
+  position:fixed;
+  top:0; left:0; width:100vw; height:100vh;
+  z-index: 1000;
+}
+.flake {
+  position:absolute;
+  top:-10px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 1px white);
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes fall {
+  to { transform: translateY(110vh); }
+}
+
+/* Rainbow glow animation */
+@keyframes rainbowGlow {
+  0%{filter: drop-shadow(0 0 8px red);}
+  20%{filter: drop-shadow(0 0 8px orange);}
+  40%{filter: drop-shadow(0 0 8px yellow);}
+  60%{filter: drop-shadow(0 0 8px green);}
+  80%{filter: drop-shadow(0 0 8px blue);}
+  100%{filter: drop-shadow(0 0 8px violet);}
+}
+
+/* Đăng nhập */
+#loginScreen {
+  height: 100vh;
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items:center;
+}
+#loginScreen input {
+  background:#222;
+  border:none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 1.2rem;
+  color:#0f0;
+  width: 250px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 10px #0f0 inset;
+}
+#loginScreen button {
+  background:#0f0;
+  border:none;
+  border-radius: 8px;
+  padding: 12px 25px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color:#111;
+  cursor:pointer;
+  box-shadow: 0 0 15px #0f0;
+  transition: background 0.3s ease;
+}
+#loginScreen button:hover { background:#0c0; }
+
+/* Màn hình robot */
+#robotScreen {
+  display:none;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Robot container */
+#robotContainer {
+  position: relative;
+  margin: 30px auto 20px;
+  width: 160px;
+  height: 220px;
+  background: #222;
+  border-radius: 20px 20px 40px 40px;
+  box-shadow:
+    0 0 20px #0f0,
+    0 0 35px #0f0 inset;
+  animation: rainbowGlow 4s linear infinite;
+  filter: drop-shadow(0 0 6px #0f0);
+  user-select:none;
+}
+
+/* Robot di chuyển nhẹ (lắc ngang) */
+#robotContainer.move {
+  animation: moveSide 3s ease-in-out infinite;
+}
+@keyframes moveSide {
+  0%, 100% {transform: translateX(0);}
+  50% {transform: translateX(15px);}
+}
+
+/* Robot head - mặt tròn */
+#head {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(145deg, #0f0, #006600);
+  border-radius: 50%;
+  margin: 15px auto 0;
+  box-shadow: inset 0 0 15px #0f0;
+  position: relative;
+}
+
+/* Mắt robot */
+#eyeLeft, #eyeRight {
+  position: absolute;
+  top: 42px;
+  width: 20px;
+  height: 20px;
+  background: #0f0;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #0f0;
+}
+#eyeLeft { left: 35px; }
+#eyeRight { right: 35px; }
+
+/* Thân robot */
+#body {
+  width: 90px;
+  height: 80px;
+  background: linear-gradient(135deg, #003300, #005500);
+  margin: 10px auto;
+  border-radius: 20px 20px 15px 15px;
+  box-shadow: inset 0 0 10px #0f0;
+}
+
+/* Tay trái và phải */
+#armLeft, #armRight {
+  position: absolute;
+  top: 90px;
+  width: 20px;
+  height: 70px;
+  background: linear-gradient(45deg, #004400, #007700);
+  border-radius: 15px;
+  box-shadow: inset 0 0 8px #0f0;
+}
+#armLeft { left: -25px; transform-origin: top center; transition: transform 0.3s ease; }
+#armRight { right: -25px; transform-origin: top center; transition: transform 0.3s ease; }
+
+/* Tay robot cầm bảng */
+#board {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  border: 2px solid #0f0;
+  border-radius: 10px;
+  padding: 10px 15px;
+  font-weight: 700;
+  font-size: 1.4rem;
+  width: 100px;
+  text-align: center;
+  box-shadow: 0 0 10px #0f0;
+  user-select:none;
+}
+
+/* Chân robot */
+#legLeft, #legRight {
+  position: absolute;
+  bottom: 10px;
+  width: 25px;
+  height: 50px;
+  background: linear-gradient(135deg, #002200, #004400);
+  border-radius: 12px;
+  box-shadow: inset 0 0 10px #0f0;
+}
+#legLeft { left: 40px; }
+#legRight { right: 40px; }
+
+/* Đồng hồ đếm ngược */
+#timer {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-top: 10px;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 10px #0f0;
+}
+
+/* Dự đoán */
+#prediction {
+  font-size: 1.8rem;
+  margin-top: 10px;
+  font-weight: 700;
+  text-shadow: 0 0 10px #0f0;
+}
+#prediction.tai { color: #0f0; }
+#prediction.xiu { color: #f00; }
+
+/* Tổng số lần chơi */
+#totalCount { margin-top: 12px; font-size: 1.2rem; font-weight: 600; }
+
+/* Mẹo chơi */
+#tipsContainer {
+  margin: 25px auto 0;
+  width: 280px;
+  background: #222;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #0f0;
+  padding: 15px 20px;
+  color: #0f0;
+  user-select:none;
+  position: relative;
+}
+#tipsTitle { font-weight: 700; font-size: 1.3rem; margin-bottom: 10px; }
+#tipsText { max-height: 140px; overflow-y: auto; line-height: 1.5; }
+#lockTipsBtn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #111;
+  border: 1.5px solid #0f0;
+  color: #0f0;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 4px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select:none;
+}
+#lockTipsBtn.locked { background: #0f0; color: #111; border-color: #0c0; }
+#tipsText.locked { filter: blur(4px); }
